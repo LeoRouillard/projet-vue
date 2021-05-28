@@ -2,22 +2,27 @@
   <div class="header">
     <h1>Liste des utilisateurs</h1>
     <br>
-    <button
-      class="btn btn-primary"
-      @click="fetchUsers"
-    >
-      Fetch users
-    </button>
-    <select
-      id="value"
-      name="value"
-      @change="changeVal"
-    >
-      <option value="all">Tout</option>
-      <option value="female">Femme</option>
-      <option value="male">Homme</option>
-    </select>
-    <input v-model="name" type="text" @input="recherche(name)" placeholder="Rechercher" />
+    <div style="display:flex;justify-content:space-evenly">
+      <button
+        class="btn btn-primary"
+        @click="fetchUsers"
+      >
+        Fetch users
+      </button>
+      <select
+        id="value"
+        name="value"
+        @change="changeVal"
+      >
+        <option value="all">Tout</option>
+        <option value="female">Femme</option>
+        <option value="male">Homme</option>
+      </select>
+      <input v-model="name" type="text" @input="recherche(name)" placeholder="Rechercher" />
+      <span class="counter">
+        {{ userFiltered }} / {{ userNonFiltered }} utilisateurs
+      </span>
+    </div>
   </div>
 </template>
 
@@ -28,6 +33,10 @@ export default {
     return {
       name: '',
     };
+  },
+  props: {
+    userFiltered: Number,
+    userNonFiltered: Number,
   },
   methods: {
     fetchUsers() {

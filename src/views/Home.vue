@@ -4,6 +4,8 @@
       v-model="gender"
       @fetchUsers="fetchUsers"
       @name="recherche"
+      :userFiltered="filteredList.length"
+      :userNonFiltered="users.length"
     />
     <List
       :filteredlist="filteredList"

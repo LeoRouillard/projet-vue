@@ -9,6 +9,8 @@
 import UserDetails from '@/components/UserDetails.vue';
 import UserEdit from '@/components/UserEdit.vue';
 import axios from 'axios';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default {
   name: 'User',
