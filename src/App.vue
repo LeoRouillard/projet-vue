@@ -1,8 +1,32 @@
 <template>
   <div id="app">
-    <router-view/>
+    <div v-if="notification" :class="`bg-${notification.type}`" class="alert">
+      {{ notification.message }}
+    </div>
+
+    <router-view @notification="showNotification"/>
   </div>
 </template>
+
+<script>
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      notification: {},
+    };
+  },
+  methods: {
+    showNotification(notification) {
+      console.log(notification.type);
+      this.notification = notification;
+    },
+  },
+};
+</script>
 
 <style>
 #app {

@@ -12,7 +12,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr :key="user.email" v-for="user in sortFilter" @click="goToDetails(user.id)">
+        <tr :key="user.email"
+          v-for="user in sortFilter"
+          @click="$router.push({name: 'User', params: {'id': user.id}})"
+        >
           <td><img style="height:75px" :src="user.picture" /></td>
           <td v-html="user.nameFormated">
             {{ user.first }} {{ user.last }}
@@ -49,9 +52,6 @@ export default {
         return;
       }
       this.sortDirection = 'asc';
-    },
-    goToDetails(value) {
-      this.$router.push({ name: 'User', params: { id: value } });
     },
   },
   computed: {

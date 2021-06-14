@@ -8,10 +8,10 @@
     <div class="container" style="width:40%;">
       <div class="row align-items-center">
         <div class="col" style="border-right: 1px solid">
-          <img v-bind:src="user.picture" style="height:250px" />
+          <img v-bind:src="user.avatarUrl" style="height:250px" />
         </div>
         <div class="col">
-          <h3>{{ user.first }} {{ user.last }}</h3>
+          <h3>{{ user.firstName }} {{ user.lastName }}</h3>
           <br>
           <p>Email : {{ user.email }}</p>
           <p>Age : {{ user.age }} ans</p>
