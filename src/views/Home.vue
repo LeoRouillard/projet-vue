@@ -10,12 +10,10 @@
     <List
       :filteredlist="filteredList"
     />
-    <HelloWorld />
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue';
 import Header from '@/components/Header.vue';
 import List from '@/components/List.vue';
 
@@ -26,7 +24,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
     Header,
     List,
   },

@@ -21,7 +21,6 @@ export default {
   },
   methods: {
     showNotification(notification) {
-      console.log(notification.type);
       this.notification = notification;
     },
   },

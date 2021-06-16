@@ -2,7 +2,6 @@
   <div class="UserDetails">
     <div class="align-items-center">
       <h1>Détails</h1>
-      <router-link to="/" style="color:white" class="btn btn-danger">Retour</router-link>
     </div>
     <br>
     <div class="container" style="width:40%;">

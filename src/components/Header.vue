@@ -9,6 +9,13 @@
       >
         Fetch users
       </button>
+      <button
+        class="btn btn-success"
+        type="button"
+        @click="showModal = true"
+      >
+        Créer un utilisateur
+      </button>
       <select
         id="value"
         name="value"
@@ -27,11 +34,15 @@
 </template>
 
 <script>
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default {
   name: 'Header',
   data() {
     return {
       name: '',
+      showModal: false,
     };
   },
   props: {

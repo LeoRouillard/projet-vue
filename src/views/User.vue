@@ -6,9 +6,11 @@
         class="btn btn-primary profile-button"
         type="button"
         @click="modification = true"
+        style="margin-right:15px"
       >
         Editer le profil
       </button>
+      <router-link to="/" style="color:white" class="btn btn-danger">Retour</router-link>
     </div>
     <div v-else style="margin-top:25px">
       <form class="card shadow w-50 mx-auto" @submit.prevent="updateUser">
@@ -27,11 +29,18 @@
             <div class="col-md-12 col-lg-6 col-sm-12">
               <label class="mt-2">Détails</label>
               <textarea class="form-control" v-model="user.details"/>
+              <label class="mt-2">Numéro de téléphone</label>
+              <input class="form-control" type="text" v-model="user.phone">
+              <label class="mt-2">Genre</label>
+              <select class="form-control" v-model="user.gender">
+                <option>male</option>
+                <option>female</option>
+              </select>
             </div>
           </div>
 
           <div class="text-center mt-5">
-            <button type="submit" class="btn btn-primary ">
+            <button type="submit" class="btn btn-primary" style="margin-right:15px">
               Modifier
             </button>
             <button
