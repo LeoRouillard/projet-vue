@@ -1,10 +1,14 @@
 <template>
   <div id="app">
-    <div v-if="notification" :class="`bg-${notification.type}`" class="alert">
+    <div
+      v-if="notification"
+      :class="`bg-${notification.type}`"
+      class="alert"
+    >
       {{ notification.message }}
     </div>
 
-    <router-view @notification="showNotification"/>
+    <router-view @notification="showNotification" />
   </div>
 </template>
 
@@ -22,6 +26,9 @@ export default {
   methods: {
     showNotification(notification) {
       this.notification = notification;
+      setTimeout(() => {
+        this.notification = null;
+      }, 5000);
     },
   },
 };

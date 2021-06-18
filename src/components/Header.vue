@@ -1,5 +1,11 @@
 <template>
   <div class="header">
+    <Modal
+      v-if="showModal"
+      @closeModal="closeModal"
+      @notification="showNotification"
+    />
+
     <h1>Liste des utilisateurs</h1>
     <br>
     <div style="display:flex;justify-content:space-evenly">
@@ -10,22 +16,39 @@
         Fetch users
       </button>
       <button
-        class="btn btn-success"
         type="button"
-        @click="showModal = true"
+        class="btn btn-success"
+        @click="openModal"
       >
-        Créer un utilisateur
+        Create user
       </button>
       <select
         id="value"
         name="value"
         @change="changeVal"
       >
-        <option value="all">Tout</option>
-        <option value="female">Femme</option>
-        <option value="male">Homme</option>
+        <option
+          value="all"
+        >
+          Tout
+        </option>
+        <option
+          value="female"
+        >
+          Femme
+        </option>
+        <option
+          value="male"
+        >
+          Homme
+        </option>
       </select>
-      <input v-model="name" type="text" @input="recherche(name)" placeholder="Rechercher" />
+      <input
+        v-model="name"
+        type="text"
+        placeholder="Rechercher"
+        @input="recherche(name)"
+      >
       <span class="counter">
         {{ userFiltered }} / {{ userNonFiltered }} utilisateurs
       </span>
@@ -36,18 +59,22 @@
 <script>
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Modal from '@/components/Modal.vue';
 
 export default {
   name: 'Header',
+  components: {
+    Modal,
+  },
+  props: {
+    userFiltered: Number,
+    userNonFiltered: Number,
+  },
   data() {
     return {
       name: '',
       showModal: false,
     };
-  },
-  props: {
-    userFiltered: Number,
-    userNonFiltered: Number,
   },
   methods: {
     fetchUsers() {
@@ -58,6 +85,15 @@ export default {
     },
     recherche(value) {
       this.$emit('name', value);
+    },
+    openModal() {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
+    showNotification(notification) {
+      this.$emit('notification', notification);
     },
   },
 };

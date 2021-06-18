@@ -5,54 +5,28 @@
       <button
         class="btn btn-primary profile-button"
         type="button"
-        @click="modification = true"
         style="margin-right:15px"
+        @click="modification = true"
       >
         Editer le profil
       </button>
-      <router-link to="/" style="color:white" class="btn btn-danger">Retour</router-link>
+      <router-link
+        to="/"
+        style="color:white"
+        class="btn btn-danger"
+      >
+        Retour
+      </router-link>
     </div>
-    <div v-else style="margin-top:25px">
-      <form class="card shadow w-50 mx-auto" @submit.prevent="updateUser">
-        <div class="card-body p-5">
-          <div class="row">
-            <div class="col-md-12 col-lg-6 col-sm-12">
-              <label class="mt-2">Nom</label>
-              <input class="form-control" type="text" v-model="user.lastName">
-              <label class="mt-2">Prénom</label>
-              <input class="form-control" type="text" v-model="user.firstName">
-              <label class="mt-2">Email</label>
-              <input class="form-control" type="email" v-model="user.email">
-              <label class="mt-2">Date de naissance</label>
-              <input class="form-control" type="datetime-local" v-model="user.birthDate">
-            </div>
-            <div class="col-md-12 col-lg-6 col-sm-12">
-              <label class="mt-2">Détails</label>
-              <textarea class="form-control" v-model="user.details"/>
-              <label class="mt-2">Numéro de téléphone</label>
-              <input class="form-control" type="text" v-model="user.phone">
-              <label class="mt-2">Genre</label>
-              <select class="form-control" v-model="user.gender">
-                <option>male</option>
-                <option>female</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="text-center mt-5">
-            <button type="submit" class="btn btn-primary" style="margin-right:15px">
-              Modifier
-            </button>
-            <button
-              class="btn btn-danger"
-              type="button"
-              @click="modification = false"
-            >
-              Annuler
-            </button>
-          </div>
-        </div>
-      </form>
+    <div
+      v-else
+      style="margin-top:25px"
+    >
+      <Form
+        :initial-values="user"
+        @submit="updateUser"
+        @cancel="cancel"
+      />
       <br>
     </div>
   </div>
@@ -60,6 +34,7 @@
 
 <script>
 import UserDetails from '@/components/UserDetails.vue';
+import Form from '@/components/Form.vue';
 import axios from 'axios';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -68,6 +43,7 @@ export default {
   name: 'User',
   components: {
     UserDetails,
+    Form,
   },
   data() {
     return {
@@ -95,6 +71,9 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    cancel() {
+      this.modification = false;
     },
   },
 };
