@@ -3,9 +3,9 @@
     <Header
       v-model="gender"
       @fetchUsers="fetchUsers"
-      @name="recherche"
       :userFiltered="filteredList.length"
       :userNonFiltered="users.length"
+      @name="recherche"
     />
     <List
       :filteredlist="filteredList"

@@ -15,7 +15,7 @@ export default {
     };
   },
   created() {
-    axios.get('http://localhost:3080/api/toto')
+    axios.get('/api/test')
       .then((response) => {
         this.data = response.data;
       });

@@ -4,16 +4,14 @@ const app = express();
 const port = 3080;
 const history = require('connect-history-api-fallback');
 
-app.use(history());
-app.use(express.static(path.join(__dirname, '/dist')));
-
-app.get('/api/toto', (req, res) => {
-    res.json({ message:'hello' });
+app.get('/api/test', (req, res) => {
+    res.json({ 'message':'hello' });
 })
 
+app.use(history());
+app.use(express.static('dist'));
+
 app.listen(port, () => {
-  console.log(`Server listening on the port ${port}`);
+  console.log(`Server listening`);
 });
-app.use(function (req, res) {
-  res.status(404).send('Error 404');
-});
+
