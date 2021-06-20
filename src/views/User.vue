@@ -59,6 +59,7 @@ export default {
       const { data: user } = await axios(`https://ynov-front.herokuapp.com/api/users/${this.$route.params.id}`);
       this.user = {
         ...user.data,
+        birthDate: user.data.birthDate.split('T')[0],
         age: new Date(Date.now() - new Date(user.data.birthDate).getTime()).getFullYear() - 1970,
       };
     },

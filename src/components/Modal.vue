@@ -52,16 +52,16 @@ export default {
       this.$emit('closeModal');
     },
     async createUser(newUser) {
-      console.log('create');
-      console.log(newUser);
       /* eslint no-underscore-dangle: 0 */
       /*eslint-disable */
       await axios.post(`https://ynov-front.herokuapp.com/api/users`, newUser)
         .then(() => {
           this.$emit('notification', { type: 'success', message: 'Utilisateur crée' });
-          this.$emit('closeModal')
+          this.$emit('closeModal');
+          this.$emit('fetchUsers');
         })
         .catch((error) => {
+          console.log(error)
           this.$emit('notification', { type: 'danger', message: error.message });
         });
     },

@@ -4,6 +4,7 @@
       v-if="showModal"
       @closeModal="closeModal"
       @notification="showNotification"
+      @click="fetchUsers"
     />
 
     <h1>Liste des utilisateurs</h1>
@@ -78,6 +79,7 @@ export default {
   },
   methods: {
     fetchUsers() {
+      console.log('fecthuser dans header');
       this.$emit('fetchUsers');
     },
     changeVal(e) {

@@ -17,17 +17,22 @@
           <label class="mt-2">Prenom</label>
           <input class="form-control" type="tel" v-model="user.firstName">
           <label class="mt-2">Genre</label>
-          <input class="form-control" type="text" v-model="user.gender">
+          <select class="form-control" v-model="user.gender">
+            <option>male</option>
+            <option>female</option>
+          </select>
           <label class="mt-2">Détails</label>
           <textarea class="form-control"  v-model="user.details"/>
-
           <label class="mt-2">Image url</label>
           <input class="form-control" type="text" v-model="user.avatarUrl">
         </div>
       </div>
 
       <div class="text-center mt-5">
-        <button type="submit" class="btn btn-primary mr-2">
+        <button
+          type="submit"
+          class="btn btn-primary mr-2"
+        >
           Enregistrer
         </button>
         <button
@@ -50,6 +55,9 @@ export default {
     return {
       user: this.initialValues,
     };
+  },
+  created() {
+    console.log(this.user.birthDate);
   },
   methods: {
     saveForm() {
