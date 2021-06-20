@@ -6,6 +6,7 @@
       :userFiltered="filteredList.length"
       :userNonFiltered="users.length"
       @name="recherche"
+      @notification="showNotification"
     />
     <List
       :filteredlist="filteredList"
@@ -57,6 +58,9 @@ export default {
     },
     recherche(value) {
       this.name = value;
+    },
+    showNotification(notification) {
+      this.$emit('notification', notification);
     },
   },
   computed: {

@@ -56,9 +56,6 @@ export default {
       user: this.initialValues,
     };
   },
-  created() {
-    console.log(this.user.birthDate);
-  },
   methods: {
     saveForm() {
       this.$emit('submit', this.user);
